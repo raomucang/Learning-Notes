@@ -11,7 +11,6 @@
 ```git
 $ git init
 Initialized empty Git repository in D:/gitSpace/Test/.git/
-
 ```
 
 ## 一个基本的流程工作
@@ -26,7 +25,6 @@ Initialized empty Git repository in D:/gitSpace/Test/.git/
 
 ```git
 $ git add Test.txt
-
 ```
 
 我们可以使用 `git status` 命令查看当前状态，这里Git告诉我们 `Test.txt` 文件被修改了，而 `Test2.txt` 文件 没有使用 `git add` 命令添加过，所以它的状态是 `Untracked` 。
@@ -46,8 +44,6 @@ Untracked files:
   (use "git add <file>..." to include in what will be committed)
 
         Test2.txt
-
-
 ```
 
 现在，我们再次使用 `git add` 命令将 `Test.txt` 也添加到暂存区，然后再使用 `git status` 命令查看一下，我们可以看到两个文件现在都在暂存区了
@@ -67,9 +63,6 @@ Changes to be committed:
 
         new file:   Test.txt
         new file:   Test2.txt
-
-
-
 ```
 
 ### 提交更改
@@ -82,8 +75,6 @@ $ git commit -m "a Test commit"
  2 files changed, 2 insertions(+)
  create mode 100644 Test.txt
  create mode 100644 Test2.txt
-
-
 ```
 
 再次使用 `git status` 命令看看，可以看到已经将暂存区的文件全部提交了
@@ -92,8 +83,6 @@ $ git commit -m "a Test commit"
 $ git status
 On branch master
 nothing to commit, working tree clean
-
-
 ```
 
 ## 版本回退
@@ -103,14 +92,12 @@ nothing to commit, working tree clean
 
 ```git
 $ git add Test.txt
-
 ```
 
 ```git
 $ git commit -m "b Test commit"
 [master bfc296d] b Test commit
  1 file changed, 1 insertion(+), 1 deletion(-)
-
 ```
 
 ```git
@@ -144,8 +131,6 @@ Author: raomucang <2267168887@qq.com>
 Date:   Sat Aug 24 15:58:43 2019 +0800
 
     a Test commit
-
-
 ```
 
 如果嫌输出信息太多，看得眼花缭乱的，可以试试加上 `--pretty=oneline` 参数，其中你所看到 `fe34aea3...` 这样一大串的是版本号
@@ -155,8 +140,6 @@ $ git log --pretty=oneline
 fe34aea35ace7505080b3c233b5389b3e1d7bb0a (HEAD -> master) c Test commit
 bfc296d26c586420f7a48ea1805e241408e4cbce b Test commit
 d52d2415afe6304a28d1065ff4d29cf6fc30d414 a Test commit
-
-
 ```
 
 现在我们要使用 `git reset` 命令回退到上一个版本，也就是 `b Test commit` 版本，这里我们使用的完整命令是 `git reset --hard HEAD^`，如果要回退到上上个版本则是`git reset --hard HEAD^^`，如果回退版本次数多，还可以写为 `git reset --hard HEAD~100` 这样的形式
@@ -164,7 +147,6 @@ d52d2415afe6304a28d1065ff4d29cf6fc30d414 a Test commit
 ```git
 $ git reset --hard HEAD^
 HEAD is now at bfc296d b Test commit
-
 ```
 
 再次使用 `git log` 查看版本库的状态，最新的版本 `c Test commit` 已经找不到了，但是如果我们想回到 `c Test commit` ,我们可以使用 `git reset --hard 版本号前几位` 命令，如果不知道版本号可以使用 `git reflog` 命令来查询你的每一次命令
@@ -182,15 +164,11 @@ Author: raomucang <2267168887@qq.com>
 Date:   Sat Aug 24 15:58:43 2019 +0800
 
     a Test commit
-
-
 ```
 
 ```git
 $ git reset --hard fe34a
 HEAD is now at fe34aea c Test commit
-
-
 ```
 
 ```git
@@ -200,7 +178,6 @@ bfc296d HEAD@{1}: reset: moving to HEAD^
 fe34aea (HEAD -> master) HEAD@{2}: commit: c Test commit
 bfc296d HEAD@{3}: commit: b Test commit
 d52d241 HEAD@{4}: commit (initial): a Test commit
-
 ```
 
 ## 撤销修改
@@ -225,8 +202,6 @@ Changes not staged for commit:
         deleted:    Test2.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
-
-
 ```
 
 ```git
@@ -236,10 +211,8 @@ rm 'Test.txt'
 
 ```git
 $ git commit
-
 ```
 
 ```git
 $ git checkout -- Test2.txt
-
 ```
