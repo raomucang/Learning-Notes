@@ -305,9 +305,13 @@ $ git rm Test.txt
 rm 'Test.txt'
 ```
 
-`$ git commit`
+```git
+$ git commit
+```
 
-`$ git checkout -- Test2.txt`
+```git
+$ git checkout -- Test2.txt
+```
 
 ## 远程仓库的使用
 
@@ -378,7 +382,7 @@ If you wish to set tracking information for this branch you can do so with:
     git branch --set-upstream-to=origin/<branch> dev
 ```
 
-git pull也失败了，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接：
+`git pull` 也失败了，原因是没有指定本地 `dev` 分支与远程 `origin/dev` 分支的链接，根据提示，设置 `dev` 和 `origin/dev` 的链接：
 
 ```git
 $ git branch --set-upstream-to=origin/dev dev
@@ -530,7 +534,7 @@ Unmerged paths:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-这时我们便需要手动打开文件修改冲突位置，Git用<<<<<<<，=======，>>>>>>>标记出不同分支的内容
+这时我们便需要手动打开文件修改冲突位置，`Git`用`<<<<<<<`，`=======`，`>>>>>>>`标记出不同分支的内容
 
 ```git
 Git is a distributed version control system.
