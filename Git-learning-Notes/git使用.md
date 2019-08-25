@@ -184,7 +184,7 @@ nothing to commit, working tree clean
 ## 版本回退
 
 每当我们使用 `git commit` 命令，都是在Git中“保存了一个快照”，可以理解为一次游戏存档，如果我们将文件该乱了，我们就可以从 `commit` 中恢复，然后继续工作。
-为了接下来演示方便我们再进行两次文件修改和提交次 `commit` ，分别加入说明 `b Test commit` 和 `c Test commit`
+为了接下来演示方便我们再进行两次文件修改和提交次 `commit` ，分别加入说明 `"b Test commit"` 和 `"c Test commit"`
 
 ```
 $ git add Test.txt
