@@ -317,3 +317,7 @@ Deleted branch dev (was f1988e8).
 $ git branch
 * master
 ```
+
+## 我是小尾巴
+
+ 你已经学会了Git的基基基基本操作了，已经是一个成熟的初学者了，要学会自己发现问题，寻找问题，本笔记会继续更新其他关于git的其他用法，但是如果你学的速度超过了本笔记的更新速度。。。你可以去看[廖雪峰大神的git学习教程](https://www.liaoxuefeng.com/wiki/896043488029600)或者前往[git官方网站下载官方文档学习](https://git-scm.com/book/zh/v2)
