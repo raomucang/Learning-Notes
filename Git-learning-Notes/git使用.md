@@ -4,6 +4,100 @@
 
 此文章作为一篇速查笔记，仅记录本人在git工具学习与使用过程中容易忘记，和需要查询的部分，如果需要系统性的学习，请点击上方廖雪峰大神的网站学习，或者前往[git官方网站下载官方文档学习](https://git-scm.com/book/zh/v2)
 
+## Git命令速查
+
+`git init`  建立Git仓库
+
+`git add fileName`  将文件加入到暂存区
+
+`git commit -m "本次提交的说明"`  将文件提交到仓库
+
+`git status`  显示工作区状态
+
+`git diff`  显示那些文件被修改过
+
+`git log` 显示从最近到最远的提交日志
+
+`git log --pretty=oneline`  显示从最近到最远的提交日志简单版
+
+`git reset --hard HEAD^`  回退到上一个版本
+
+`git reset --hard HEAD^^` 回退到上上个版本
+
+`git reset --hard HEAD~100` 回退到往上100个版本
+
+`git reset --hard 版本号` 回退到某个版本
+
+`git reflog`  查看命令历史
+
+`git checkout -- fileName`  撤销文件在工作区的修改
+
+`git rm fileName` 删除文件
+
+`git checkout -- fileName`  恢复文件资源管理器中删除的文件
+
+`git remote add 远程仓库名 仓库地址.git`  关联远程仓库
+
+`git push 远程仓库名/分支名 分支名` 将本地选中的分支推送到远程仓库选中的分支中
+
+`git push -u 远程仓库名/分支名 分支名`  加上`-u`参数，可以将本地仓库分支和远程仓库分支关联起来，在以后的推送或者拉取时就可以简化命令。
+
+`git push 远程仓库名 分支名`  简化后的推送命令
+
+`git clone 远程库的地址`  从远程克隆一个库到本地
+
+`git checkout 分支名` 如果有分支，则切换到目标分支，没有则创建一个
+
+`git checkout -b 分支名`  `-b`参数代表创建并切换
+
+`git branch`  查看当前分支
+
+`git merge 分支名`  将选中分支合并到当前分支
+
+`git merge --no-ff -m "merge with no-ff" dev` 禁用`Fast forward`模式
+
+`git branch -d 分支名` 删除选中分支
+
+`git branch -D 分支名`  强行删除还未合并的分支
+
+`git log --graph`  查看分支合并情况
+
+`git log --graph --pretty=oneline --abbrev-commit`  查看分支合并情况
+
+`git stash` 存储工作现场
+
+`git stash list`  查看存储的工作现场
+
+`git stash apply` 恢复但不删除`stash`
+
+`git stash pop` 恢复并删除`stash`
+
+`git stash apply stash@{0}` 恢复指定的`stash`
+
+`git cherry-pick 提交编号` 复制一个特定的提交到当前分支
+
+`git remote`  查看远程库的信息
+
+`git remote -v` 查看远程库的详细信息
+
+`git pull`  从一个仓库或者本地的分支拉取并且整合代码
+
+`git rebase`  整理提交历史
+
+`git tag 标签名` 打一个新标签
+
+`git tag` 查看所有标签
+
+`git tag 标签名 提交序号` 给一个特定的提交打一个标签
+
+`git tag -d 标签名` 删除标签
+
+`git push 仓库名 标签名`  推送某个标签到远程
+
+`git push origin --tags`  一次性推送全部尚未推送到远程的本地标签
+
+`git push origin :refs/tags/标签名` 删除远程标签
+
 ## 创建版本库
 
 新建一个文件夹，在文件夹下输入 `git init` 命令会将此文件夹变为Git可以管理的仓库,并在此文件夹下会生成一个名为 `.git` 的新目录（默认是隐藏的）,此目录是Git用来跟踪和管理版本库
