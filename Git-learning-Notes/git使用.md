@@ -23,9 +23,7 @@ Initialized empty Git repository in D:/gitSpace/Test/.git/
 
 每当我们完成一部分工作（例如：新建文件，删除文件，修改文件等），使工作区发生改变，我们都可以使用 `git add` 命令将工作区的当前状况（改变后的状况）添加到暂存区。在这里我们在工作区中新建了 `Test.txt` 和 `Test2.txt` 两个文件，然后将 `Test.txt` 文件加入到暂存区
 
-```git
-$ git add Test.txt
-```
+`$ git add Test.txt`
 
 我们可以使用 `git status` 命令查看当前状态，这里Git告诉我们 `Test.txt` 文件被修改了，而 `Test2.txt` 文件 没有使用 `git add` 命令添加过，所以它的状态是 `Untracked` 。
 
@@ -48,9 +46,7 @@ Untracked files:
 
 现在，我们再次使用 `git add` 命令将 `Test.txt` 也添加到暂存区，然后再使用 `git status` 命令查看一下，我们可以看到两个文件现在都在暂存区了
 
-```git
-$ git add Test2.txt
-```
+`$ git add Test2.txt`
 
 ```git
 $ git status
@@ -90,9 +86,7 @@ nothing to commit, working tree clean
 每当我们使用 `git commit` 命令，都是在Git中“保存了一个快照”，可以理解为一次游戏存档，如果我们将文件该乱了，我们就可以从 `commit` 中恢复，然后继续工作。
 为了接下来演示方便我们再进行两次文件修改和提交次 `commit` ，分别加入说明 `b Test commit` 和 `c Test commit`
 
-```git
-$ git add Test.txt
-```
+`$ git add Test.txt`
 
 ```git
 $ git commit -m "b Test commit"
@@ -100,9 +94,7 @@ $ git commit -m "b Test commit"
  1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 
-```git
-$ git add Test.txt
-```
+`$ git add Test.txt`
 
 ```git
 $ git commit -m "c Test commit"
@@ -184,9 +176,7 @@ d52d241 HEAD@{4}: commit (initial): a Test commit
 
 `git checkout --file`命令可以丢弃工作区的修改（注意 `--`），就是让工作区文件和暂存区文件保持一致，就是让这个文件回到最近一次git commit或git add时的状态。
 
-```git
-$ git checkout --Test.txt
-```
+`$ git checkout --Test.txt`
 
 ## 删除文件
 
@@ -209,10 +199,121 @@ $ git rm Test.txt
 rm 'Test.txt'
 ```
 
-```git
-$ git commit
-```
+`$ git commit`
+
+`$ git checkout -- Test2.txt`
+
+## 远程仓库的使用
+
+### 关联远程仓库
+
+如果你想将本地仓库与远程仓库关联起来可以使用 `git remote add 远程仓库名（如果使用的是github这里一般是origin） 远程仓库地址.git` 命令，然后我们可以使用 `git remote -v` 命令查看已添加的库
+
+`$ git remote add origin https://github.com/raomucang/Java-Learning-Notes.git`
 
 ```git
-$ git checkout -- Test2.txt
+$ git remote -v
+origin  https://github.com/raomucang/Java-Learning-Notes.git (fetch)
+origin  https://github.com/raomucang/Java-Learning-Notes.git (push)
+```
+
+### 将本地库的所有内容推送到远程库上
+
+使用 `git push` 命令将本地库的内容推送到远程库上，这里使用的 `git push -u origin master` 命令中 `origin` 是指远程库的名字，而 `master` 是指远程库分支名，`master` 一般是主分支名，实际上是把当前分支推送到远程分支 `master`
+
+由于远程库是空的，我们第一次推送 `master` 分支时，加上了`-u`参数，Git不但会把本地的 `master` 分支内容推送的远程新的 `master` 分支，还会把本地的 `master` 分支和远程的 `master` 分支关联起来，在以后的推送或者拉取时就可以简化命令。
+
+```git
+$ git push -u origin master
+Counting objects: 20, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (15/15), done.
+Writing objects: 100% (20/20), 1.64 KiB | 560.00 KiB/s, done.
+Total 20 (delta 5), reused 0 (delta 0)
+remote: Resolving deltas: 100% (5/5), done.
+To github.com:michaelliao/learngit.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+```
+
+从现在起，只要本地作了提交，就可以通过命令
+
+`$ git push origin master`
+
+### 从远程库克隆
+
+使用命令 `git clone 远程仓库地址` 克隆一个本地库
+
+```git
+$ git clone https://github.com/raomucang/Java-Learning-Notes.git
+Cloning into 'Java-Learning-Notes'...
+remote: Enumerating objects: 62, done.
+remote: Counting objects: 100% (62/62), done.
+remote: Compressing objects: 100% (38/38), done.
+remote: Total 62 (delta 25), reused 49 (delta 15), pack-reused 0
+Unpacking objects: 100% (62/62), done.
+```
+
+## 分支管理
+
+### 创建分支
+
+我们创建一个名为 `dev` 的分支，然后切换到 `dev` 分支：使用命令`$ git checkout -b dev`
+
+```git
+$ git checkout -b dev
+Switched to a new branch 'dev'
+```
+
+`git checkout` 命令加上 `-b` 参数表示创建并切换，相当于以下两条命令
+
+```git
+$ git branch dev
+$ git checkout dev
+Switched to branch 'dev'
+```
+
+### 查看当前分支
+
+`git branch` 命令会列出所有分支，当前分支前面会标一个 `*` 号，现在我们的提交都是在 `dev` 分支上
+
+```git
+$ git branch
+* dev
+  master
+```
+
+### 切换分支
+
+`git checkout 分支名` 命令还可以用来切换分支，这里我们使用 `git checkout master` 可以切换到 `master` 分支
+
+```git
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+```
+
+### 合并分支
+
+我们可以使用 `git merge 想要合并的分支名` 命令可以将想要合并的分支合并到当前分支上
+
+```git
+$ git merge dev
+Already up to date.
+```
+
+### 删除分支
+
+我们可以使用 `git branch -d 分支名` 命令删除分支
+
+```git
+$ git branch -d dev
+Deleted branch dev (was f1988e8).
+```
+
+删除后，查看 `branch` ，就只剩下 `master` 分支了：
+
+```git
+$ git branch
+* master
 ```
