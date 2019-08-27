@@ -18,7 +18,11 @@ java方法名一般使用小驼峰起名法，也就是首个单词的首字母�
 helloWorld
 ```
 
-包名
+## 包名
 
 package 域名倒写.模块名.组建；
 全部使用小写字母
+
+```Java
+package com.study.test;
+```
