@@ -30,7 +30,7 @@
 
 * 继承
 
-* 方法覆盖和方法重载
+* [方法覆盖和方法重载](https://github.com/raomucang/Learning-Notes/blob/master/Java-learning-Notes/%E6%96%B9%E6%B3%95%E8%A6%86%E7%9B%96%E5%92%8C%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD.md)
 
 * 接口和抽象类
 
