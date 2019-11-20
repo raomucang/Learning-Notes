@@ -1,6 +1,6 @@
 # day06【Collections、Set、Map、斗地主排序】
 
-### ==第一章 Collections类==
+### 第一章 Collections类
 
 ##### 1.0 Collections的介绍
 
@@ -137,7 +137,7 @@ public class TestVariableArgumentsDemo02 {
 
 ### 第二章 Set接口
 
-##### ==1.Set接口的特点==
+##### 1.Set接口的特点
 
 ```java
 a.无索引
@@ -145,7 +145,7 @@ b.无序的,是指存入和取出时顺序不能保证一致(LinkedHashSet除外
 c.元素唯一
 ```
 
-##### ==2.Set接口的常用方法以及常用子类==
+##### 2.Set接口的常用方法以及常用子类
 
 ```java
 Set接口的常用方法: 没有特有方法,只有Collection继承的方法(常用8个)
@@ -313,7 +313,7 @@ public class TestHashCodeDemo04 {
 		我们必须重写自定义类型的hashCode和equals方法
   ```
 
-### ==第三章 Map集合==
+### 第三章 Map集合
 
 ##### 3.1 Map的概述
 
@@ -377,7 +377,7 @@ public class TestMapDemo {
 }
 ```
 
-##### ==3.4 Map的遍历== ************
+##### 3.4 Map的遍历
 
 - ##### 遍历方式一:以键找值
 
