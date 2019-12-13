@@ -27,7 +27,7 @@ public class Solution {
         if (pNode == null) {
             return null;
         }
-        
+
         if (pNode.right != null) {
             pNode = pNode.right;
             while (pNode.left != null){
@@ -35,14 +35,14 @@ public class Solution {
             }
             return pNode;
         }
-        
+
         while (pNode.next != null) {
             if (pNode.next.left == pNode) {
                 return pNode.next;
             }
             pNode = pNode.next;
         }
-        
+
         return null;
     }
 }
