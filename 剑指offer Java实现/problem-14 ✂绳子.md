@@ -41,7 +41,7 @@ public class Solution {
 }
 ```
 
-## 题解 贪婪
+## 题解 贪婪算法
 
 ```java
 public class Solution {
@@ -55,7 +55,7 @@ public class Solution {
         }
 
         int timesOf3 = target / 3;
-        
+
         if (target == timesOf3 * 3 + 1) {
             timesOf3 = timesOf3 - 1;
         }
