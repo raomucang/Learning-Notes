@@ -26,7 +26,7 @@ public class test {
 
     public static boolean isExist(int[][] arr, int number) {
         int line = 0;
-        int column = arr.length - 1;
+        int column = arr[0].length - 1;
         while (line < arr.length && column >= 0) {
             if (number == arr[line][column]) {
                 return true;
