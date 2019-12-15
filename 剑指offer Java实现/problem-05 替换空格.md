@@ -7,14 +7,8 @@
 ## 题解
 
 ```java
-public class test {
-    public static void main(String[] args) {
-        StringBuffer str = new StringBuffer("We are happy.");
-        str = replaceSpace(str);
-        System.out.println(str);
-    }
-
-    public static StringBuffer replaceSpace(StringBuffer str) {
+public class Solution {
+    public String replaceSpace(StringBuffer str) {
         int oldLength = str.length();
         int newLength = 0;
         for (int i = 0; i < str.length(); i++) {
@@ -37,8 +31,7 @@ public class test {
             }
             oldIndex--;
         }
-        return str;
+        return str.toString();
     }
 }
-
 ```
