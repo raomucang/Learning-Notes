@@ -28,13 +28,15 @@ import java.util.Stack;
 public class Solution {
     Stack<Integer> stack1 = new Stack<Integer>();
     Stack<Integer> stack2 = new Stack<Integer>();
-    
+
     public void push(int node) {
         stack1.push(node);
     }
-    
+
     public int pop() {
+        /*如果 statck2 不为空，说明还有 node 存储在stack2 中，如果这时将 stack1 的node 取出放入 stack2，原先 stack2 中的顺序靠前的 node 就会排到后面，就会出错*/
         if (stack2.isEmpty()) {
+            /*将 stack1 中的 node 出栈，依次压入 stack2，最先压入 stack1 的 node 就变成了stack2最后压入栈的*/
             while (!stack1.isEmpty()) {
                 stack2.add(stack1.pop());
             }
