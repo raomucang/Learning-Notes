@@ -6,36 +6,34 @@
 
 ## 题解
 
+这道题的解题思路是从二维数组的右上角开始查找
+
 ```java
-public class test {
-    public static void main(String[] args) {
-        int[][] arr = {{1, 2, 8, 9}, {2, 4, 9, 12}, {4, 7, 10, 13}, {6, 8, 11, 15}};
-        int number = 7;
-
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                System.out.print(arr[i][j] + "\t");
-            }
-            System.out.println();
+public class Solution {
+    public boolean Find(int target, int [][] array) {
+        /*如果数组为空，直接返回 false*/
+        if (array == null) {
+            return false;
         }
-        System.out.println("number: " + number);
 
-        boolean b = isExist(arr, number);
-        System.out.println("是否存在:" + b);
-    }
+        /*定义查找的初始位置，我们从二维数组的右上角开始查找*/
+        int row = 0;
+        int col = array[0].length - 1;
 
-    public static boolean isExist(int[][] arr, int number) {
-        int line = 0;
-        int column = arr[0].length - 1;
-        while (line < arr.length && column >= 0) {
-            if (number == arr[line][column]) {
+        /*到查询的位置的行大于数组的总行数或者查询的位置的列小于0时，则跳出循环，这时已经查询完了整个数组*/
+        while (row < array.length && col >= 0) {
+            //查询到，返回true
+            if (target == array[row][col]) {
                 return true;
-            } else if (number < arr[line][column]) {
-                column--;
-            } else if (number > arr[line][column]) {
-                line++;
+            /*首先是从右往左进行列查询，当要查询的数字大于查询位置的值时，说明数字不在这一列，查询下一列，当要查询位置小于数字时，则锁定了数字可能存在的列，就需要往下开始查询*/
+            } else if (target < array[row][col]) {
+                col--;
+            /*开始向下查询*/
+            }else {
+                row++;
             }
         }
+        /*查询完整个数字都没有找到，则返回false*/
         return false;
     }
 }
