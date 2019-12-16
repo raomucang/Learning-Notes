@@ -14,6 +14,8 @@ struct ListNode
 
 ## 题解一，栈方法
 
+使用栈，先进后出
+
 ```java
 /**
 *    public class ListNode {
@@ -26,26 +28,27 @@ struct ListNode
 *    }
 *
 */
+
+/*代码简单，不需要注释*/
 import java.util.ArrayList;
 public class Solution {
     public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
-        ArrayList<Integer> list = printList(listNode);
-        return list;
-    }
+        ArrayList<Integer> array = new ArrayList<Integer>();
 
-    public ArrayList<Integer> printList(ListNode listNode) {
-        ArrayList<Integer> list = new ArrayList<Integer>();
         while (listNode != null) {
-            list.add(0, listNode.val);
+            array.add(0, listNode.val);
             listNode = listNode.next;
         }
-        return list;
+
+        return array;
     }
 }
 ```
 
 ## 题解二，递归方法
 
+递归方案，不断递归直到递归到链表末尾，再从链表末尾开始将值加入到集合中
+
 ```java
 /**
 *    public class ListNode {
@@ -58,19 +61,22 @@ public class Solution {
 *    }
 *
 */
+
+/*这个代码也很简单，也不需要注释。。。😓*/
 import java.util.ArrayList;
 public class Solution {
     public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        listAdd(list, listNode);
-        return list;
+        ArrayList<Integer> array = new ArrayList<Integer>();
+        arrayAdd(array, listNode);
+        return array;
     }
 
-    public void listAdd(ArrayList list, ListNode listNode) {
+    public void arrayAdd(ArrayList array, ListNode listNode) {
         if (listNode != null) {
-            listAdd(list, listNode.next);
-            list.add(listNode.val);
+            arrayAdd(array, listNode.next);
+            array.add(listNode.val);
         }
     }
+
 }
 ```
